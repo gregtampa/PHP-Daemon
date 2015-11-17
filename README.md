@@ -1,4 +1,5 @@
 # PHP Simple Daemon #
+FORKED FROM shaneharter
 
 Create solid, long-running PHP daemon processes by extending the Core_Daemon class. Use a built-in timer to run your application in second or sub-second frequencies, or build servers using libraries like Socket and LibEvent. Create conventional single-process applications or choose true parallel processing in PHP with persistent background workers.
 
