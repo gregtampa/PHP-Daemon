@@ -13,7 +13,7 @@ Create solid, long-running PHP daemon processes by extending the Core_Daemon cla
 * Refactor code to use dependency injection and begin writing unit tests.
 * Namespace the code
 * Investigate updating the minimum version to PHP5.4. 
-* More Details Here https://github.com/shaneharter/PHP-Daemon/wiki/Version-2.2
+* More Details Here https://github.com/gregtampa/PHP-Daemon/wiki/Version-2.2
 
 #### Daemon Monitoring 
 * Over the last few years I've built and deployed many daemons based on this library as well as cron jobs of all sorts. Recently I launched https://cronitor.io -- a dead simple cron (and daemon!) monitoring service. With one line of code you can integrate Cronitor into your daemon and get email/sms alerts if anything goes wrong.
@@ -49,9 +49,9 @@ In a few lines of code you can create asynchronous background processes that let
 
   PHP Simple Daemon workers and tasks are simple and powerful multi-processing tools in a language with very few of them. (But don't go trying to build a PHP version of Node.js)
 
-  https://github.com/shaneharter/PHP-Daemon/wiki/Worker-API
+  https://github.com/gregtampa/PHP-Daemon/wiki/Worker-API
   
-  https://github.com/shaneharter/PHP-Daemon/wiki/Task-API
+  https://github.com/gregtampa/PHP-Daemon/wiki/Task-API
 
 * ###Integrated Debugging Tools
 Debugging multi-process applications is notoriously painful and several integrated debugging tools are shipped with the library. 
@@ -62,19 +62,19 @@ Debugging multi-process applications is notoriously painful and several integrat
 
   You'll also find the shm_console app that lets you attach to a shared memory address, scan for keys, view them, and even run a `watch` command that prints out a transactional log of creations, updates and deletes.
   
-  https://github.com/shaneharter/PHP-Daemon/wiki/Debugging-workers
+  https://github.com/gregtampa/PHP-Daemon/wiki/Debugging-workers
   
-  https://github.com/shaneharter/PHP-Daemon/wiki/Debug-Tools
+  https://github.com/gregtampa/PHP-Daemon/wiki/Debug-Tools
   
 * ###Simple Callbacks: Because decoupled is better.
 A simple jQuery-like API lets you add callbacks to daemon lifecycle events (think: startup, teardown, fork, etc) and create your own. Attach an event listener using `on()`, remove it using `off()`, and create your own using `dispatch()`. Like all PHP Simple Daemon APIs it accepts a Closure or any valid PHP Callback. 
 
-  https://github.com/shaneharter/PHP-Daemon/wiki/Using-callbacks-and-custom-events
+  https://github.com/gregtampa/PHP-Daemon/wiki/Using-callbacks-and-custom-events
 
 * ###Simple Plugins: Because code reuse is better.
 If you care more about building a reusable component with the ability to execute code during the daemon startup process before your application code is called than you do about decoupling, you can create a Plugin simply by implementing `Core_IPlugin`. Plugins are the easiest way to share code between multiple daemon applications and it can literally be implemented in 3 lines of code. We've got several general-purpose plugins on the drawing board to ship with the Core_Daemon library but currently we're shipping just one. The Ini plugin gives you an easy tool to read and validate any config files you ship with your application.
 
-  https://github.com/shaneharter/PHP-Daemon/wiki/Creating-and-Using-Plugins
+  https://github.com/gregtampa/PHP-Daemon/wiki/Creating-and-Using-Plugins
 
 * ###Lock files (and lock keys, and lock mutexes, and...)
 Several plugins are shipped with the library that implement different ways to create a lock for your daemon process. Running more than once instance of a daemon is often a problem and implementing a locking mechnism is often a headache. We've been paged at 2 AM when supervisord couldn't restart a daemon because of a stale lock file. We've bundled the Lock plugins to try to save you from that same fate. In all cases locks are self-expiring and you can chose between using a Memcache key, a lockfile, or a shared memory address. A faux lock plugin is also shipped to make your life easier during application development. 
@@ -87,7 +87,7 @@ The library ships with an insanely basic event log. While the features of off-th
 
   If you have an internal logging tool, or just a favorite logging library, you can replace the internal tool as simply as overloading the `log()` method. Just be sure the only require parameter is the message being logged and everything internally that uses the event log -- Core_Daemon, signal handlers, the Workers API, etc -- will play nice. 
 
-  https://github.com/shaneharter/PHP-Daemon/wiki/Logging
+  https://github.com/gregtampa/PHP-Daemon/wiki/Logging
 
 * ###Built-in Signal Handling
 Out of the box, your application will respond to 4 signals. You can add-to or overload that behavior by adding an `ON_SIGNAL` callback. The four built-in behaviors are: 
@@ -104,7 +104,7 @@ Out of the box, your application will respond to 4 signals. You can add-to or ov
     **SIGCONT `kill -18`:**
     If your daemon is currently blocked or sleeping, wake it up and continue. (Will always wake it up from a sleep(), may not always return from a blocking API call.)
  
-    https://github.com/shaneharter/PHP-Daemon/wiki/Creating-Custom-Signal-Handlers
+    https://github.com/gregtampa/PHP-Daemon/wiki/Creating-Custom-Signal-Handlers
  
 * ###Command Line Switches
 You can run a '-H' help command when you run the Daemon. It will dump a help menu that looks like this, but can be easily overridden for your daemon:
